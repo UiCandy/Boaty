@@ -1,26 +1,27 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+/** @jsx jsx */
+import { Component } from "react";
+import { jsx } from "theme-ui";
+import { Switch, Route, BrowserRouter } from "react-router-dom";
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+import Header from "app/components/Header";
+import Wrapper from "app/components/Wrapper";
+import Home from "app/components/Home";
+import Search from "app/containers/Search";
+
+class App extends Component {
+  render() {
+    return (
+      <BrowserRouter>
+        <Header title="Zizoo Boats" />
+        <Wrapper>
+          <Switch>
+            <Route exact path={`${process.env.PUBLIC_URL}/`} component={Home} />
+            <Route path="/Search" component={Search} />
+          </Switch>
+        </Wrapper>
+      </BrowserRouter>
+    );
+  }
 }
 
 export default App;
