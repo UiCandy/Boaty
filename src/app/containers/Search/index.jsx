@@ -55,6 +55,10 @@ const Search = () => {
       [name]: value,
     };
 
+    if (!value.length) {
+      setDisplayData(data.boats);
+    }
+
     const result = filteredBoats(data.boats, activeFilters.current);
     setDisplayData(result);
   };
