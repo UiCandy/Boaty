@@ -34,8 +34,10 @@ const Search = () => {
     const nameMatch = (boat) =>
       boat.name.toLowerCase().includes(search.toLowerCase()) ||
       boat.type.toLowerCase().includes(search.toLowerCase());
-    const yearMatch = (boat) => boat.year < Number(makeYear);
-    const sizeMatch = (boat) => boat.length > Number(boatLength);
+    const yearMatch = (boat) =>
+      makeYear === "modern" ? boat.year >= 2010 : boat.year < 2010;
+    const sizeMatch = (boat) =>
+      boatLength === "short" ? boat.length <= 14 : boat.length > 14;
     const res = boats.filter((boat) => {
       return (
         (!search.length || nameMatch(boat)) &&
@@ -52,10 +54,9 @@ const Search = () => {
       ...activeFilters.current,
       [name]: value,
     };
-    if (!value.length) {
-      setDisplayData(data.boats);
-    }
-    setDisplayData(filteredBoats(data.boats, activeFilters.current));
+
+    const result = filteredBoats(data.boats, activeFilters.current);
+    setDisplayData(result);
   };
 
   const resetFilter = () => {

@@ -23,6 +23,12 @@ export const theme = {
     highlight: "#DD7373",
     muted: "#f6f6f6",
   },
+  wrapper: {
+    stretch: {
+      width: "100%",
+      padding: 0,
+    },
+  },
   styles: {
     root: {
       fontFamily: "body",

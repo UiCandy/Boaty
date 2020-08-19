@@ -20,8 +20,9 @@ const detailsStyle = {
   paddingRight: 4,
   cursor: "pointer",
   transition: "0.2s all ease-in-out",
+  backgroundColor: "highlight",
   "&:hover": {
-    background: "secondary",
+    backgroundColor: "secondary",
   },
 };
 
@@ -92,7 +93,7 @@ const BoatCard = ({ boat }) => {
             <Text>Guests: {boat.guests}</Text>
           </Box>
           <Box>
-            {!!boat.reviews.score && (
+            {!!boat.reviews.score ? (
               <Box textAlign="right">
                 {[...Array(boat.reviews.score)].map((e, i) => (
                   <StarRateIcon style={{ color: "#ffe24b" }} key={i} />
@@ -100,14 +101,16 @@ const BoatCard = ({ boat }) => {
                 <Text
                   display="inline"
                   sx={{
-                    top: -6,
+                    top: "-8px",
                     position: "relative",
-                    fontSize: 1,
+                    fontSize: "12px",
                   }}
                 >
                   ({boat.reviews.total})
                 </Text>
               </Box>
+            ) : (
+              <Text textAlign="right">No ratings yet</Text>
             )}
             <Text textAlign="right">Length: {boat.length}m</Text>
             <Text textAlign="right" color="primary">

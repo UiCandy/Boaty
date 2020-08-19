@@ -11,7 +11,7 @@ import empty from "app/assets/empty.png";
 const BoatList = ({ loading, boats }) => {
   return (
     <TransitionGroup>
-      <Wrapper variant="wrapper.row">
+      <Wrapper>
         {!loading &&
           (!!boats.length ? (
             boats.map((boat) => (

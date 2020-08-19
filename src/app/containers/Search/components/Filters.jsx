@@ -9,6 +9,7 @@ const Filters = ({ handleFilter, resetFilter }) => {
       <Box
         p={2}
         sx={{
+          minWidth: 200,
           label: {
             cursor: "pointer",
             "&:hover": {
@@ -55,19 +56,19 @@ const Filters = ({ handleFilter, resetFilter }) => {
           <Radio
             name="makeYear"
             id="vintage"
-            value={2009}
+            value="vintage"
             onChange={handleFilter}
           />
-          Vintage (Older than 2010)
+          Vintage
         </Label>
         <Label>
           <Radio
             name="makeYear"
             id="modern"
-            value={2010}
+            value="modern"
             onChange={handleFilter}
           />
-          Modern (2010)
+          Modern
         </Label>
       </Box>
       <Box
@@ -91,26 +92,26 @@ const Filters = ({ handleFilter, resetFilter }) => {
           }}
           fontFamily="heading"
         >
-          Length
+          Size
         </Text>
 
         <Label>
           <Radio
             name="boatLength"
             id="short"
-            value="14"
+            value="short"
             onChange={handleFilter}
           />
-          Short (2010)
+          Short
         </Label>
         <Label>
           <Radio
             name="boatLength"
             id="long"
-            value="15"
+            value="long"
             onChange={handleFilter}
           />
-          Long (Older than 2010)
+          Long
         </Label>
       </Box>
     </>
