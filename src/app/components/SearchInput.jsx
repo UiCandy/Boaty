@@ -6,7 +6,7 @@ const style = {
   width: "100%",
   flexGrow: 1,
   marginTop: 4,
-  marginBottom: 4,
+  marginBottom: 2,
   outline: "none",
   padding: 2,
   fontSize: 4,
@@ -15,7 +15,7 @@ const style = {
   borderRadius: 4,
   transition: "0.3s all ease-in-out",
   "&:focus": {
-    borderColor: "primary",
+    borderColor: "secondary",
   },
 };
 

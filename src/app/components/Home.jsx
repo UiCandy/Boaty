@@ -2,7 +2,6 @@ import React from "react";
 import { Link } from "react-router-dom";
 import Wrapper from "app/components/Wrapper";
 
-import logo from "logo.svg";
 import bg from "app/assets/photo.jpeg";
 const Home = () => {
   return (

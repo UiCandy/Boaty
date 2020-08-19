@@ -19,7 +19,8 @@ export const theme = {
     text: "#000",
     background: "#fff",
     primary: "#333",
-    secondary: "#306",
+    secondary: "#96c5dc",
+    highlight: "#DD7373",
     muted: "#f6f6f6",
   },
   styles: {

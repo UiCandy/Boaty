@@ -1,42 +1,33 @@
-import React, { useRef } from "react";
-import { Box, Text, Button } from "rebass";
+import React from "react";
+import { Box, Text } from "rebass";
 import { Label, Radio } from "@rebass/forms";
 import ClearIcon from "@material-ui/icons/Clear";
-
-export const filteredBoats = (boats, searchTerm, fieldName) => {
-  if (!searchTerm.length) {
-    return boats;
-  }
-  console.log(boats, searchTerm, fieldName);
-  return boats.filter((boat) => {
-    const { name, year, length } = boat;
-    switch (fieldName) {
-      case "search":
-        return name.toLowerCase().includes(searchTerm.toLowerCase());
-
-      case "makeYear":
-        return year >= searchTerm;
-
-      case "boatLength":
-        return length >= searchTerm;
-
-      default:
-        return boat;
-    }
-  });
-};
 
 const Filters = ({ handleFilter, resetFilter }) => {
   return (
     <>
-      <Box p={2}>
+      <Box
+        p={2}
+        sx={{
+          label: {
+            cursor: "pointer",
+            "&:hover": {
+              color: "secondary",
+            },
+          },
+        }}
+      >
         <Box
           sx={{
             cursor: "pointer",
-            border: "1px dashed #EAD94C",
-            color: "#DD7373",
+            border: "2px dashed #96c5dc",
+            color: "highlight",
             padding: 1,
             borderRadius: 4,
+            transition: "0.2s all ease-in-out",
+            "&:hover": {
+              borderColor: "highlight",
+            },
           }}
           onClick={resetFilter}
           backgroundColor="transparent"
@@ -51,10 +42,9 @@ const Filters = ({ handleFilter, resetFilter }) => {
         <Text
           sx={{
             paddingTop: 3,
-            borderBottom: "2px solid #EAD94C",
+            borderBottom: "2px dashed #96c5dc",
             paddingBottom: 2,
             marginBottom: 3,
-            color: "#2b193d",
             fontWeight: "bold",
           }}
           fontFamily="heading"
@@ -80,14 +70,23 @@ const Filters = ({ handleFilter, resetFilter }) => {
           Modern (2010)
         </Label>
       </Box>
-      <Box p={2}>
+      <Box
+        p={2}
+        sx={{
+          label: {
+            cursor: "pointer",
+            "&:hover": {
+              color: "highlight",
+            },
+          },
+        }}
+      >
         <Text
           sx={{
             paddingTop: 3,
-            borderBottom: "2px solid #EAD94C",
+            borderBottom: "2px solid #96c5dc",
             paddingBottom: 2,
             marginBottom: 3,
-            color: "#2b193d",
             fontWeight: "bold",
           }}
           fontFamily="heading"

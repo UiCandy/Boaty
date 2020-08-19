@@ -14,9 +14,20 @@ const headingStyle = {
   fontWeight: 700,
 };
 
+const detailsStyle = {
+  position: "relative",
+  marginTop: 20,
+  paddingRight: 4,
+  cursor: "pointer",
+  transition: "0.2s all ease-in-out",
+  "&:hover": {
+    background: "secondary",
+  },
+};
+
 const capitalize = (s) => {
   if (typeof s !== "string") return "";
-  return s.replace("_", " ").charAt(0) + s.slice(1).toLowerCase();
+  return s.charAt(0) + s.slice(1).toLowerCase().replace(/_/g, " ");
 };
 
 const BoatCard = ({ boat }) => {
@@ -28,7 +39,7 @@ const BoatCard = ({ boat }) => {
         marginBottom: 4,
         width: "100%",
         boxShadow: "0 0px 8px #dedede",
-        borderRadius: 1,
+        borderRadius: 4,
         div: {
           borderRadius: "4px 0 0 4px",
         },
@@ -59,6 +70,9 @@ const BoatCard = ({ boat }) => {
             <Heading sx={headingStyle}>
               {boat.name} {boat.length}m ({boat.year})
             </Heading>
+            <Heading fontSize={4} color="highlight" fontWeight={400}>
+              {capitalize(boat.type)}
+            </Heading>
           </Box>
           <Box>
             <Heading sx={headingStyle}>€{boat.price}/Day</Heading>
@@ -79,19 +93,27 @@ const BoatCard = ({ boat }) => {
           </Box>
           <Box>
             {!!boat.reviews.score && (
-              <Text textAlign="right">
+              <Box textAlign="right">
                 {[...Array(boat.reviews.score)].map((e, i) => (
                   <StarRateIcon style={{ color: "#ffe24b" }} key={i} />
                 ))}
-              </Text>
+                <Text
+                  display="inline"
+                  sx={{
+                    top: -6,
+                    position: "relative",
+                    fontSize: 1,
+                  }}
+                >
+                  ({boat.reviews.total})
+                </Text>
+              </Box>
             )}
             <Text textAlign="right">Length: {boat.length}m</Text>
             <Text textAlign="right" color="primary">
               Instant booking
             </Text>
-            <Button
-              sx={{ position: "relative", marginTop: 20, paddingRight: 4 }}
-            >
+            <Button sx={detailsStyle}>
               View Details{" "}
               <ArrowRightIcon
                 style={{ position: "absolute", top: 9.5, right: 4 }}
